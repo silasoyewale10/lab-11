@@ -2,7 +2,7 @@ const express = require('express');
 const ejs = require('ejs');
 const superagent = require('superagent');
 const app = express();
-const PORT = process.env.PORT || 3050;
+const PORT = process.env.PORT || 3020;
 
 app.use(express.static('./public'));
 // new middleware is urlencoded
@@ -34,10 +34,21 @@ function Book(query, response) {
 }
 
 app.post('/', (req, res) => {
-    const url = `https://www.googleapis.com/books/v1/volumes?q=author+inauthor:${req.body.author}`;
+    console.log('22222', req.body.authorText);
+    const url = `https://www.googleapis.com/books/v1/volumes?q=author+inauthor:${req.body.authorText}`;
     superagent.get(url).then(data => {
-        let query = req.body.author;
-        console.log('1111', query);
+        const books =[];
+        
+        for (let i = 0; i< 10; i++) {
+            books.push(data.body.items[i].volumeInfo);
+            if (i === 9) {
+                return;
+            }
+        }
+        console.log('333333', books);
+        // console.log('1111', data.body.items[i].volumeInfo);
+        let query = req.body;
+        // console.log('1111', query);
         let narrowedData = data.body.items[0].volumeInfo;
         const newBook = new Book(query, narrowedData);
         // console.log(data.body.items[0].volumeInfo);
