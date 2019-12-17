@@ -1,0 +1,24 @@
+{
+  "name": "lab-11",
+  "version": "1.0.0",
+  "description": "# Project Name",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/silasoyewale10/lab-11.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/silasoyewale10/lab-11/issues"
+  },
+  "homepage": "https://github.com/silasoyewale10/lab-11#readme",
+  "dependencies": {
+    "ejs": "^3.0.1",
+    "express": "^4.17.1"
+  }
+}
