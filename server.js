@@ -2,7 +2,7 @@ const express = require('express');
 const ejs = require('ejs');
 // const superagent = require('superagent');
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3030;
 
 app.use(express.static('./public'));
 // new middleware is urlencoded
@@ -12,7 +12,7 @@ app.use(express.urlencoded( {extended:true} ));
 app.set('view engine', 'ejs');
 
 
-app.get('/hello', (req, res) => {
+app.get('/', (req, res) => {
     res.render('pages/index');
 })
 
