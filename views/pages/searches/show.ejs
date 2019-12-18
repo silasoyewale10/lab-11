@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <ul>
         <% books.forEach(book => { %>
-         <li><img src=<%= book.image %>></li>
-         <li><%= book.title %></li>
-         <li><%= book.author %></li>
-         <li><%= book.description %></li>   
+         <h2><img src=<%= book.image %>></h2>
+         <h3><%= book.title %></h3>
+         <h3><%= book.author %></h3>
+         <p><%= book.description %></p>  
        <% }) %>
     </ul>
 </body>

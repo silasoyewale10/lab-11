@@ -1,3 +1,9 @@
-body {
+html, body {
     background: #06c5df;
+    width: 600px;
+    margin: auto;
+}
+
+ul{
+    text-align: center;
 }
