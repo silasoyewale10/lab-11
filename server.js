@@ -74,6 +74,12 @@ function getBooksData(req, res) {
 app.post('/bookshelf', getBookshelf);
 
 function getBookshelf(req, res) {
+    const SQL = `INSERT INTO books(
+        image_url, title, author, descriptions, isbn, bookshelf
+        ) VALUES (
+          $1, $2, $3, $4, $5, $6
+          )`;
+        client.query(SQL, [req.body.image, req.body.title, req.body.author, req.body.description, req.body.isbn, req.body.bookshelf]);
     res.send(req.body);
 } 
 
