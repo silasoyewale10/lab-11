@@ -1,9 +1,15 @@
-html, body {
+body{
     background: #06c5df;
-    width: 600px;
+    
+    width: 50%;
     margin: auto;
 }
 
 ul{
     text-align: center;
+}
+
+#submit {
+    display: block;
+    margin: auto;
 }
