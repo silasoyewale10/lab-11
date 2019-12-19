@@ -2,7 +2,7 @@
   "name": "lab-11",
   "version": "1.0.0",
   "description": "# Project Name",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -22,6 +22,8 @@
     "dotenv": "^8.2.0",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
+    "pg": "^7.15.0",
+    "postgresql": "0.0.1",
     "superagent": "^5.1.2"
   },
   "devDependencies": {}
