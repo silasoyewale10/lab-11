@@ -16,6 +16,10 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
+// app.get('/', (req, res) => {
+//     res.render('index');
+// });
+
 const client = new pg.Client(process.env.DATABASE_URL);
 client.on('error', error => console.log(error));
 client.connect();
