@@ -23,7 +23,10 @@
     "ejs": "^3.0.1",
     "express": "^4.17.1",
     "pg": "^7.15.0",
+<<<<<<< HEAD
     "postgresql": "0.0.1",
+=======
+>>>>>>> affb29dd798cdd300273e2da7cc103f2cf1aaac1
     "superagent": "^5.1.2"
   },
   "devDependencies": {}
