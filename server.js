@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.set('views', './views/pages');
 
-app.get('/', (req, res) => {
+app.get('/search', (req, res) => {
     res.render('index');
 });
 
@@ -55,9 +55,9 @@ function getBooksData(req, res) {
             console.log('33333', sqlValues);
 
             const SQL = `INSERT INTO books(
-            image_url, title, author, descriptions, isbn
+            image_url, title, author, descriptions, isbn, bookshelf
             ) VALUES (
-              $1, $2, $3, $4, $5
+              $1, $2, $3, $4, $5, $6
               )`;
             client.query(SQL, sqlValues[0]);
 
@@ -65,12 +65,12 @@ function getBooksData(req, res) {
             res.render('searches/show', { books: books });
         }).catch((err) => errorHandler(err, res));
 
-        app.post('/bookshelf', getBookshelf);
-}
-
+    }
+    
+app.post('/bookshelf', getBookshelf);
 
 function getBookshelf(req, res) {
-    res.send(req.body.bookshelf);
+    res.send(req.body);
 } 
 
 function errorHandler(error, response) {
