@@ -7,3 +7,8 @@ html, body {
 ul{
     text-align: center;
 }
+
+#submit {
+    display: block;
+    margin: auto;
+}
