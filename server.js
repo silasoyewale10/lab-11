@@ -78,18 +78,19 @@ function getBookshelf(req, res) {
 app.get('/menu', displaySavedBooks)
 function displaySavedBooks (req, res) {
     // res.render('index', {body: 'good day'})
-    client.query(`SELECT * FROM books;`).then(stuffFromDB =>{
-        console.log('stuffFromDB.rows isisisis', stuffFromDB.rows);
-        res.render('index', {books : stuffFromDB.rows});
+    client.query(`SELECT * FROM books;`).then(saveBooks =>{
+        console.log('saveBooks.rows isisisis', saveBooks.rows);
+        res.render('index', {books : saveBooks.rows});
     })
 }
 
-app.post('/detail/:id', showBookDetail);
+app.get('/detail/:id', showBookDetail);
 function showBookDetail(req, res){
     // res.send('onde book');
     client.query(`SELECT * FROM books where id =$1`,[req.params.id]).then(singleBookData => {
         console.log('1111111',singleBookData.rows[0]);
-        res.render('./books/detail', {singleBook : singleBookData.rows[0]})
+        let book = singleBookData.rows[0]
+        res.render('./books/detail', {singleBook : book})
     })
 }
 // displaySavedBooks();
