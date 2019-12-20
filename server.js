@@ -13,7 +13,7 @@ app.set('view engine', 'ejs');
 app.set('views', './views/pages');
 
 app.get('/', (req, res) => {
-    res.render('index');
+    res.render('searches/new');
 });
 
 // app.get('/', (req, res) => {
@@ -56,14 +56,7 @@ function getBooksData(req, res) {
                     element.volumeInfo.description,
                     element.volumeInfo.industryIdentifiers[0].identifier])
             });
-            console.log('33333', sqlValues);
 
-            const SQL = `INSERT INTO books(
-            image_url, title, author, descriptions, isbn, bookshelf
-            ) VALUES (
-              $1, $2, $3, $4, $5, $6
-              )`;
-            client.query(SQL, sqlValues[0]);
 
 
             res.render('searches/show', { books: books });
@@ -80,9 +73,18 @@ function getBookshelf(req, res) {
           $1, $2, $3, $4, $5, $6
           )`;
         client.query(SQL, [req.body.image, req.body.title, req.body.author, req.body.description, req.body.isbn, req.body.bookshelf]);
-    res.send(req.body);
+	res.send(req.body);
+	// const sql = `SELECT * FROM `
 } 
-
+app.get('/poppy', displaySavedBooks)
+function displaySavedBooks (req, res) {
+    // res.render('index', {body: 'good day'})
+    client.query(`SELECT * FROM books;`).then(stuffFromDB =>{
+        console.log('stuffFromDB.rows isisisis', stuffFromDB.rows);
+        res.render('index', {books : stuffFromDB.rows});
+    })
+}
+// displaySavedBooks();
 function errorHandler(error, response) {
     console.error(error);
     response.send('Ooops! Something went wrong');
