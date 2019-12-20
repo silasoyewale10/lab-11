@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="/books/style.css">
+    <link rel="stylesheet" href="/style.css">
 
 </head>
+
 <body>
-    <h1>Detailed Information for the Selected Book</h1>
-    <%=individualBook.author %>
-    <%=individualBook.title %>
-    <%=individualBook.isbn %>
-    <%=individualBook.image_url %>
-    <% console.log(individualBook)%>
-
-    <%=individualBook.descriptions %>
-
-    <form method="POST" action="/book/<%=individualBook.id%>?_method=PUT">
-        <!-- <input name ="title" type="text" value="<%= individualBook.title %>">
-        <input type="submit"> -->
-    </form>
+    <header><a href="/menu">Menu</a></header>
     
+    <h2><img src="<%= singleBook.image_url %>"></h2>
+    <h3><%= singleBook.title %></h3>
+    <h3><%= singleBook.author %></h3>
+    <p><%= singleBook.descriptions %></p>
+    <h4>ISBN:<%= singleBook.isbn %></h4>
+    <h4>Bookshelf:<%= singleBook.bookshelf %></h4>
+
+    
+    
+    
+
+
 </body>
+
 </html>

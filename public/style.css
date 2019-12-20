@@ -4,6 +4,9 @@ body{
     width: 50%;
     margin: auto;
 }
+header {
+    text-align: right;
+}
 
 ul{
     text-align: center;

@@ -12,30 +12,13 @@
         <header>
             <a href="/"></a>
         </header>
+        <!-- Saved books count -->
     <h1>booksCount : <%= books.length %> </h1>
     <% books.forEach(book => { %>
-
     <h2><img src="<%= book.image_url %>"></h2>
     <h3><%= book.title %></h3>
     <h3><%= book.author %></h3>
-    <button>view details  </button>
     <% }) %>
-
-    <!-- <h1>HELLO WORLD</h1>
-    <form action="/" method="POST">
-        <fieldset >
-            <legend>Search by title or author</legend> <br>
-            <label for="">Title                
-                <input type="radio" name="search" id="" value="title">
-            </label>
-            <input type="text" name="a">
-            <label for="">Author               
-                <input type="radio" name="search" id="" value="author">
-            </label>
-            <input type="text" name="authorText">
-            <button>Submit</button>
-        </fieldset>
-    </form> -->
 
 </body>
 </html>
