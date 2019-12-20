@@ -9,15 +9,18 @@
 </head>
 <body>
 
-        <header>
-            <a href="/"></a>
-        </header>
+    <header>
+        <a href="/menu">MENU</a>
+    </header>
         <!-- Saved books count -->
     <h1>booksCount : <%= books.length %> </h1>
     <% books.forEach(book => { %>
     <h2><img src="<%= book.image_url %>"></h2>
     <h3><%= book.title %></h3>
     <h3><%= book.author %></h3>
+    <a href="detail/<%= book.id%>">
+        <button name="view-details">View Details</button>
+    </a>
     <% }) %>
 
 </body>
