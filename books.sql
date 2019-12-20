@@ -4,7 +4,7 @@ CREATE TABLE books
     id SERIAL PRIMARY KEY,
     author VARCHAR(255),
     title VARCHAR(255),
-    isbn NUMERIC(25, 10),
+    isbn TEXT,
     image_url TEXT,
     descriptions TEXT,
     bookshelf VARCHAR(255)
