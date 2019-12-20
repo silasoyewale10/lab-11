@@ -4,7 +4,7 @@ const superagent = require('superagent');
 const app = express();
 
 const pg = require('pg');
-const PORT = process.env.PORT || 3090;
+const PORT = process.env.PORT || 3000;
 require('dotenv').config();
 app.use(express.static('./public'));
 // new middleware is urlencoded
@@ -24,7 +24,7 @@ const client = new pg.Client(process.env.DATABASE_URL);
 client.on('error', error => console.log(error));
 client.connect();
 
-function Book(url, title, author, description, isbn = "Not Available", bookshelf ='none') {
+function Book(url, title, author, description, isbn = 'Not Available', bookshelf ='none') {
     (this.image = url), (this.title = title), (this.author = author), (this.description = description), (this.isbn = isbn), (bookshelf = bookshelf);
 }
 app.post('/', getBooksData);
@@ -58,7 +58,6 @@ function getBooksData(req, res) {
             });
 
 
-
             res.render('searches/show', { books: books });
         }).catch((err) => errorHandler(err, res));
 
@@ -84,11 +83,13 @@ function displaySavedBooks (req, res) {
         res.render('index', {books : stuffFromDB.rows});
     })
 }
-app.get('/detail/:book_id', showBookDetail);
+
+app.post('/detail/:id', showBookDetail);
 function showBookDetail(req, res){
-    console.log(req.params, req.body)
-    client.query(`SELECT * FROM books where id =$1`, [req.params.book_id]).then(individualBookData => {
-        res.render('./books/detail', {individualBook : individualBookData.rows[0]})
+    // res.send('onde book');
+    client.query(`SELECT * FROM books where id =$1`,[req.params.id]).then(singleBookData => {
+        console.log('1111111',singleBookData.rows[0]);
+        res.render('./books/detail', {singleBook : singleBookData.rows[0]})
     })
 }
 // displaySavedBooks();
