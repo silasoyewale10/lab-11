@@ -1,6 +1,6 @@
 body{
     background: #06c5df;
-    
+    max-width: 500px;
     width: 50%;
     margin: auto;
 }
@@ -15,4 +15,9 @@ ul{
 #submit {
     display: block;
     margin: auto;
+}
+
+.zone1 {
+    display: block;
+    width: 400px;
 }

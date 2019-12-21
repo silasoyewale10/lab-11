@@ -43,11 +43,11 @@ function getBooksData(req, res) {
                 // console.log(element.volumeInfo.imageLinks.thumbnail);
                 books.push(
                     new Book(
-                        element.volumeInfo.imageLinks.thumbnail,
+                        element.volumeInfo.imageLinks.thumbnail || 'No Image Available',
                         element.volumeInfo.title,
                         element.volumeInfo.authors,
                         element.volumeInfo.description,
-                        element.volumeInfo.industryIdentifiers[0].identifier
+                        element.volumeInfo.industryIdentifiers[0].identifier || 'No ISBN Available'
                     )
                 );
                 sqlValues.push([element.volumeInfo.imageLinks.thumbnail,
