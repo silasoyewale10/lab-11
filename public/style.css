@@ -7,6 +7,10 @@ body{
 header {
     text-align: right;
 }
+header img {
+    width: 8%;
+    height: auto;
+}
 
 ul{
     text-align: center;
