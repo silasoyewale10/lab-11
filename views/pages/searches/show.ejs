@@ -13,13 +13,13 @@
     <ul>
         <% books.forEach((book, index) => { %>
             <h3><%= book.title %></h3>
-            <h2><img src="<%= book.image %>"""></h2>
+            <h2><img src="<%= book.image %>""></h2>
             <h3><%= book.author %></h3>
             <p><%= book.description %></p>
             <h4><%= book.isbn %></h4>
             <button id="<%= index %>" class="displayButton">Select This Book</button>
             
-            <form id="<%= index %>" value="8" action="/bookshelf" method="POST">
+            <form id="<%= index %>" value="8" action="/book" method="POST">
                 <input class="hideShowForm" type="text" name="title" value="<%= book.title %>"></input>
                 <input class="hideShowForm" type="text" name="image" value="<%= book.image %>"></input>
                 <input class="hideShowForm" type="text" name="author" value="<%= book.author %>"></input>
