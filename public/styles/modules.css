@@ -1,0 +1,73 @@
+.booksCount {
+    margin: 2%;
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.title {
+    font-size: 1.3em;
+}
+
+.title, .author, .button {
+    margin: 2%;
+}
+
+main * {
+    margin: 2%;
+}
+
+.link {
+    margin: 0px;
+    padding: 2%;
+    background-color: rgba(17, 16, 16, 0.8);
+}
+
+.button {
+    width: 50%;
+    height: 40px;
+}
+
+header img {
+    width: 8%;
+    height: auto;
+}
+
+.zone1 {
+    display: block;
+    width: 400px;
+}
+
+.description {
+    background-color: rgb(216, 216, 216);
+    color: black;
+    padding: 10%;
+}
+
+.search {
+    width: 80%;
+    display: flex;
+    align-self: flex-start;
+    margin: 5%;
+}
+
+.legend {
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+.saveForm {
+    padding: 5%;
+    background-color: rgb(206, 206, 206);
+
+}
+.saveForm * {
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+.saveButton {
+    background-color: black;
+    height: 30px;
+    color: white;
+}

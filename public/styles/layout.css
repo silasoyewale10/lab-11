@@ -1,0 +1,28 @@
+header {
+    width: 100%;
+    margin: 5%;
+    text-align: start;
+    display: inline-flex;
+    background-color: black;
+    padding: 2%;
+    font-weight: bolder;
+    font-size: 1.5em;
+}
+
+header a {
+    text-align: end;
+}
+
+main {
+    width: 100%;
+    margin: 5%;
+    padding: 2%;
+    background-color: grey;
+
+}
+
+label {
+    display: block;
+}
+
+

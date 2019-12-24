@@ -33,7 +33,8 @@ function renderSearchPage (req, res){
 function getBooksData(req, res) {
     const books = [];
     const instruction1Values = [];
-    const url = `https://www.googleapis.com/books/v1/volumes?q=author+inauthor:${req.body.authorText}`;
+    const url = getUrl(req.body.searchText, req.body.search);
+    // const url = `https://www.googleapis.com/books/v1/volumes?q=author+inauthor:${req.body.authorText}`;
     superagent
         .get(url)
         .then((data) => {
@@ -54,6 +55,17 @@ function getBooksData(req, res) {
         }).catch((err) => errorHandler(err, res));
 
     }
+    function getUrl(searchText, searchType) {
+        if (searchType === 'title') {
+            url = `https://www.googleapis.com/books/v1/volumes?q=intitle:${searchText}`;
+        } else if (searchType === 'author'){
+            url = `https://www.googleapis.com/books/v1/volumes?q=inauthor:${searchText}`;
+        }
+        return url;
+    }
+
+
+
     
 function saveBooksToDatabase(req, res) {
     const instruction1 = `INSERT INTO books(
@@ -76,7 +88,6 @@ function saveBooksToDatabase(req, res) {
 
 function displaySavedBooks (req, res) {
     client.query(`SELECT * FROM books;`).then(savedBooks =>{
-        console.log('savedBooks.rows isisisis', savedBooks.rows);
         res.render('index', {books : savedBooks.rows});
     }).catch((err) => errorHandler(err, res));
 }
@@ -92,7 +103,7 @@ function showBookDetail(req, res){
 // displaySavedBooks();
 function errorHandler(error, response) {
     console.error(error);
-    response.send('Ooops! Something went wrong');
+    response.render('error');
 }
 
 
