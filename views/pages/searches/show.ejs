@@ -1,35 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+<%- include('../layout/head') %>
+
 
 <body>
+    <%- include('../layout/header') %>
+
+    <main>
     <ul>
         <% books.forEach((book, index) => { %>
             <h3><%= book.title %></h3>
-            <h2><img src="<%= book.image %>"""></h2>
+            <h2><img src="<%= book.image %>""></h2>
             <h3><%= book.author %></h3>
             <p><%= book.description %></p>
             <h4><%= book.isbn %></h4>
-            <button id="<%= index %>" class="displayButton">Select This Book</button>
+            <button id="<%= index %>" class="displayButton button">Select This Book</button>
             
-            <form id="<%= index %>" value="8" action="/bookshelf" method="POST">
-                <input class="hideShowForm" type="text" name="title" value="<%= book.title %>"></input>
-                <input class="hideShowForm" type="text" name="image" value="<%= book.image %>"></input>
-                <input class="hideShowForm" type="text" name="author" value="<%= book.author %>"></input>
-                <input class="hideShowForm" type="text" name="description" value="<%= book.description %>"></input>
-                <input class="hideShowForm" type="text" name="isbn" value="<%= book.isbn %>"></input>
-                <input class="hideShowForm" type="text" name="bookshelf" placeholder="Enter a Bookshelf Name" id="shelf">
-                <input class="hideShowForm" type="submit" name="submit" value="Add to Database" id="submit">
+            <form class="saveForm" id="<%= index %>" value="8" action="/book" method="POST">
+                <input class="title" type="text" name="title" value="<%= book.title %>"></input>
+                <input class="image" type="text" name="image" value="<%= book.image %>"></input>
+                <input class="author" type="text" name="author" value="<%= book.author %>"></input>
+                <input class="description" type="text" name="description" value="<%= book.description %>"></input>
+                <input class="isbn" type="text" name="isbn" value="<%= book.isbn %>"></input>
+                <input class="bookshelf" type="text" name="bookshelf" placeholder="Enter a Bookshelf Name" id="shelf">
+                <input class="saveButton" type="submit" name="submit" value="Add to Database" id="submit">
             </form>
             <% }) %>
         </ul>
+    </main>
         <script
         src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="

@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+
+<%- include('../layout/head') %>
+
 <body>
-    <h1>HELLO WORLD</h1>
-    <form action="/" method="POST">
-        <fieldset >
-            <legend>Search by title or author</legend> <br>
-            <label for="">Title                
-                <input type="radio" name="search" id="" value="title">
-            </label>
-            <input type="text" name="a">
-            <label for="">Author               
-                <input type="radio" name="search" id="" value="author">
-            </label>
-            <input type="text" name="authorText">
-            <button>Submit</button>
-        </fieldset>
-    </form>
+    <%- include('../layout/header') %>
+
+    <main>
+        <form action="/searchResult" method="POST">
+            <fieldset>
+                <legend class="legend">Search by title or author</legend> <br>
+                <input class="search" type="text" name="searchText" placeholder="Enter a title or author">
+                <label class="search" for="">Title
+                    <input type="radio" name="search" id="" value="title">
+                </label>
+                <label class="search" for="">Author
+                    <input type="radio" name="search" id="" value="author">
+                </label>
+                <button clasclass="search" class="button">Search the Google Books API</button>
+            </fieldset>
+        </form>
+    </main>
 
 </body>
+
 </html>
