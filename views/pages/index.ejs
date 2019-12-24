@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+
+<!-- applying ejs partial feature -->
+<%- include('layout/head') %>
+
 <body>
+    <!-- header partial -->
+    <%- include('layout/header') %>
+    <main>
+        <h2 class="link"><a href="/">Home</a></h2>
+        <h2 class="link"><a href="/search">Search the google books API</a></h2>
 
-    <header>
-        <a href="/menu">MENU</a>
-    </header>
         <!-- Saved books count -->
-    <h1>booksCount : <%= books.length %> </h1>
-    <% books.forEach(book => { %>
-    <h2><img src="<%= book.image_url %>"></h2>
-    <h3><%= book.title %></h3>
-    <h3><%= book.author %></h3>
-    <a href="detail/<%= book.id%>">
-        <button name="view-details">View Details</button>
-    </a>
-    <% }) %>
+        <h3 class="booksCount">Saved Books: <%= books.length %> </h3>
+        <% books.forEach(book => { %>
+        <h3><img src="<%= book.image_url %>"></h3>
+        <h3 class="title"><%= book.title %></h3>
+        <h3 class="author"><%= book.author %></h3>
+        <a href="detail/<%= book.id%>">
+            <button class="button" name="view-details">View Details</button>
+        </a>
+        <% }) %>
 
+    </main>
 </body>
+
 </html>

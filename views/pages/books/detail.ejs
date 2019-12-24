@@ -1,24 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="/style.css">
-
-</head>
+<%- include('../layout/head') %>
 
 <body>
-    <header><a href="/menu">Menu</a></header>
-    
-    <h2><img src="<%= singleBook.image_url %>"></h2>
-    <h3><%= singleBook.title %></h3>
-    <h3><%= singleBook.author %></h3>
-    <p><%= singleBook.descriptions %></p>
-    <h4>ISBN:<%= singleBook.isbn %></h4>
-    <h4>Bookshelf:<%= singleBook.bookshelf %></h4>
+    <%- include('../layout/header') %>
+    <main>
+        <h2 class="image"><img src="<%= singleBook.image_url %>"></h2>
+        <h3 class="title"><%= singleBook.title %></h3>
+        <h3 class="author"><%= singleBook.author %></h3>
+        <p class="description"><%= singleBook.descriptions %></p>
+        <h4 class="isbn">ISBN:<%= singleBook.isbn %></h4>
+        <h4 class="bookshelf">Bookshelf:<%= singleBook.bookshelf %></h4>
+    </main>
+
 </body>
 
 </html>
