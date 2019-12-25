@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<form method="POST" class="saveForm" action="/update/<%= singleBook.id%>?_method=PUT">
+    <input class="title" type="text" name="title" value="<%= singleBook.title %>"></input>
+    <input class="image" type="text" name="image" value="<%= singleBook.image_url %>"></input>
+    <input class="author" type="text" name="author" value="<%= singleBook.author %>"></input>
+    <input class="description" type="text" name="description" value="<%= singleBook.descriptions %>"></input>
+    <input class="isbn" type="text" name="isbn" value="<%= singleBook.isbn %>"></input>
+    <input class="bookshelf" type="text" name="bookshelf" placeholder="Enter a Bookshelf Name" id="shelf" value="<%= singleBook.bookshelf %>">
+    <input class="saveButton" type="submit" name="submit" value="Update Book" id="submit">
+</form>

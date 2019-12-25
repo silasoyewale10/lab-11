@@ -5,8 +5,10 @@ const superagent = require('superagent');
 const app = express();
 const pg = require('pg');
 const PORT = process.env.PORT || 3002;
+const methodoverride = require('method-override');
 require('dotenv').config();
 app.use(express.static('./public'));
+app.use(methodoverride('_method'));
 // new middleware is urlencoded
 app.use(express.urlencoded({ extended: true }));
 //enable ejs files
@@ -20,9 +22,13 @@ client.connect();
 
 //Routes
 app.get('/search', renderSearchPage)
+app.get('/', displaySavedBooks);
+app.get('/detail/:id', showBookDetail);
 app.post('/searchResult', getBooksData);
 app.post('/book', saveBooksToDatabase);
-app.get('/', displaySavedBooks)
+app.put('/update/:id', updateBooks);
+app.delete('/detail/:id', deleteBook);
+
 
 
 function renderSearchPage (req, res){
@@ -34,7 +40,6 @@ function getBooksData(req, res) {
     const books = [];
     const instruction1Values = [];
     const url = getUrl(req.body.searchText, req.body.search);
-    // const url = `https://www.googleapis.com/books/v1/volumes?q=author+inauthor:${req.body.authorText}`;
     superagent
         .get(url)
         .then((data) => {
@@ -92,7 +97,6 @@ function displaySavedBooks (req, res) {
     }).catch((err) => errorHandler(err, res));
 }
 
-app.get('/detail/:id', showBookDetail);
 function showBookDetail(req, res){
     client.query(`SELECT * FROM books where id =$1`,[req.params.id]).then(singleBookData => {
         console.log('1111111',singleBookData.rows[0]);
@@ -104,6 +108,23 @@ function showBookDetail(req, res){
 function errorHandler(error, response) {
     console.error(error);
     response.render('error');
+}
+
+function updateBooks(req, res){
+    const instruction = `UPDATE books SET image_url=$1, title=$2, author=$3, descriptions=$4, isbn=$5, bookshelf=$6 WHERE id=$7`;
+    let values = [req.body.image, req.body.title, req.body.author, req.body.description, req.body.isbn, req.body.bookshelf, req.params.id];
+
+    client.query(instruction, values).then(()=> {
+        res.redirect(`/detail/${req.params.id}`);
+    })
+}
+
+
+function deleteBook (req, res) {
+    client.query('DELETE FROM books WHERE id=$1', [req.params.id]).then(data => {
+        console.log('data', data);
+        res.redirect('/');
+    }).catch(err => errorHandler(err, res));
 }
 
 
