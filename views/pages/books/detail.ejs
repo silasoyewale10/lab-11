@@ -12,8 +12,19 @@
         <p class="description"><%= singleBook.descriptions %></p>
         <h4 class="isbn">ISBN:<%= singleBook.isbn %></h4>
         <h4 class="bookshelf">Bookshelf:<%= singleBook.bookshelf %></h4>
+        <button id= "<%= singleBook.id%>" class="updateButton button">Update Details</button>
+        <form action="/detail/<%= singleBook.id%>?_method=DELETE" method="POST">
+            <button class="button inlineBtn">Delete Book</button>
+        </form>
+
+        <%- include('edit.ejs')%>
     </main>
 
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+        <script src="/js/app.js"></script>
 </body>
 
 </html>
