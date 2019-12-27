@@ -4,7 +4,7 @@ const ejs = require('ejs');
 const superagent = require('superagent');
 const app = express();
 const pg = require('pg');
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3000;
 const methodoverride = require('method-override');
 require('dotenv').config();
 app.use(express.static('./public'));
@@ -32,7 +32,7 @@ app.delete('/detail/:id', deleteBook);
 
 
 function renderSearchPage (req, res){
-    res.render('searches/new').catch((err) => errorHandler(err, res));
+    res.render('searches/new');
 };
 
 
@@ -44,7 +44,6 @@ function getBooksData(req, res) {
         .get(url)
         .then((data) => {
             let narrowedData = data.body.items;
-            console.log('narrowedData is ', narrowedData[0].volumeInfo.imageLinks);
             narrowedData.forEach((element) => {
                 books.push(
                     new Book(
@@ -85,7 +84,6 @@ function saveBooksToDatabase(req, res) {
         
         //Show detail of book just added
         client.query(instruction2, value).then(singleBookData => {
-            console.log('3333333', singleBookData.rows[0].id);
             let id = singleBookData.rows[singleBookData.rows.length-1].id;
             res.redirect(`detail/${id}`);        
     }).catch((err) => errorHandler(err, res));       
@@ -99,7 +97,6 @@ function displaySavedBooks (req, res) {
 
 function showBookDetail(req, res){
     client.query(`SELECT * FROM books where id =$1`,[req.params.id]).then(singleBookData => {
-        console.log('1111111',singleBookData.rows[0]);
         let book = singleBookData.rows[0]
         res.render('./books/detail', {singleBook : book})
     }).catch((err) => errorHandler(err, res));
@@ -122,7 +119,6 @@ function updateBooks(req, res){
 
 function deleteBook (req, res) {
     client.query('DELETE FROM books WHERE id=$1', [req.params.id]).then(data => {
-        console.log('data', data);
         res.redirect('/');
     }).catch(err => errorHandler(err, res));
 }

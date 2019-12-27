@@ -11,7 +11,9 @@ header {
 }
 
 header a {
-    text-align: end;
+    text-align:end;
+    width: 500px;
+    margin-left: 20%;
 }
 
 main {
